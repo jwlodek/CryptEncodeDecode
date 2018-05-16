@@ -132,9 +132,7 @@ int main(int argc, char** argv){
     int check = check_user_input(encode_decode_flag, key_1, key_2, message);
     if(check==-1) return -1;
     else if(encode_decode_flag==0){
-        char* no_dup = remove_duplicates(key_1);
-        int width = strlen(no_dup);
-        get_transpose_alpha(no_dup, width);
+        char* after_first = first_encoding(message, key_1);
     }
     else{
         //decode

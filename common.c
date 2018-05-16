@@ -1,3 +1,10 @@
+/*
+ * File that contains common functions used by both encoding and decoding
+ * 
+ * Author: Jakub Wlodek
+ * Created 5/16/18
+ */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -17,7 +24,6 @@ char* remove_duplicates(char* key){
     char* without_dup = (char*) calloc(1, strlen(key));
     int counter_key = 0;
     int counter_wd = 0;
-    int used[26];
     while(*(key+counter_key)!='\0'){
         int i;
         int found_dup = 0;
@@ -71,6 +77,7 @@ char* get_transpose_alpha(char* key, int width){
         }
         letter_counter++;
     }
+    free(transpose_no_dup);
     printf("The new alphabet is %s\n", transpose_alpha);
     return transpose_alpha;
 }

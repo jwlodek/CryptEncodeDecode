@@ -14,23 +14,40 @@
 #include <stdio.h>
 #include <string.h>
 #include "encoder.h"
+
+
 /*
  * The first encoding is a key transpose cypher. 
  * More details can be found in the README file 
+ * 
  * @params: message -> the initial message to encode
  * @params: first_key -> the keyword used to
+ * @return: coded message
  */
 char* first_encoding(char* message, char* first_key){
     char* no_dup = remove_duplicates(first_key);
-    int width = strlen(first_key);
-    int height = (26/width)+1;
-    char** key_transpose_alpha = (char**) malloc(width*sizeof(char*));
+    int width = strlen(no_dup);
+    char* transpose_alpha = get_transpose_alpha(no_dup, width);
+    free(no_dup);
+    char* after_first = (char*) calloc(1, 1024);
     int i;
-    for(i=0; i<width; i++){
-        *(key_transpose_alpha+i) = (char*) calloc(1,sizeof(char)*height);
+    for(i=0; i<strlen(message); i++){
+        int location = message[i]-65;
+        after_first[i] = transpose_alpha[location];
     }
+    printf("The message after the first encoding is: %s\n", after_first);
+    free(message);
+    free(transpose_alpha);
+    return after_first;
 }
 
+/*
+ * The first encoding is a key transpose cypher. 
+ * More details can be found in the README file 
+ * 
+ * @params: message -> the initial message to encode
+ * @params: first_key -> the keyword used to
+ */
 char* second_encoding(char* message, char* second_key){
     //TODO
 }
