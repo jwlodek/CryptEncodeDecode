@@ -19,6 +19,7 @@ void print_help_message(){
     printf("Required: -e or -d, -m, -f, and -s. key1 must be between 5 and 9 characters long inclusive\n");
 }
 
+//function that prints the information passed to the encoder decoder if it is valid
 void print_info(int encode_decode_flag, char* key1, char* key2, char* message){
     if(encode_decode_flag==0) printf("Encoding...\n");
     else printf("Decoding...\n");
@@ -80,24 +81,25 @@ int main(int argc, char** argv){
     char* key_2 = NULL;
     char* message = NULL;
     while(arg_num<argc){
-        printf("The arg is %s.\n", *(argv+arg_num));
+        //printf("The arg is %s.\n", *(argv+arg_num));
         char* arg = *(argv+arg_num);
+        //printf("%d\n",strcmp(arg,"-f"));
         if(strcmp(arg,"-h")==0 || strcmp(arg,"--help")==0){
             print_help_message();
             return 0;
         }
-        else if(strcmp(arg,"-d")==0 || strcmp(arg,"--decode")){
+        else if(strcmp(arg,"-d")==0 || strcmp(arg,"--decode")==0){
             encode_decode_flag = 1;
         }
-        else if(strcmp(arg,"-e")==0 || strcmp(arg,"--encode")){
+        else if(strcmp(arg,"-e")==0 || strcmp(arg,"--encode")==0){
             encode_decode_flag = 0;
         }
-        else if(strcmp(arg,"-m")==0 || strcmp(arg,"--message")){
+        else if(strcmp(arg,"-m")==0 || strcmp(arg,"--message")==0){
             message = (char*) calloc(1, MESSAGE_SIZE); 
             arg_num++;           
             strcpy(message, *(argv+arg_num));
         }
-        else if(strcmp(arg, "-f")==0||strcmp(arg,"--first-key")==0){
+        else if(strcmp(arg, "-f")==0 || strcmp(arg, "--first-key")==0){
             printf("reading the first key\n");
             key_1 = (char*) calloc(1, KEY_SIZE);
             arg_num++;

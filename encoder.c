@@ -19,6 +19,12 @@
 char* double_alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ";
 char* alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
+/*
+ * Function that is used to remove duplicate letters from the first key
+ * 
+ * @params: key -> the first encoding key
+ * @return: key without duplicates
+ */
 char* remove_duplicates(char* key){
     char* without_dup = (char*) calloc(1, strlen(key));
     int counter_key = 0;
@@ -36,6 +42,7 @@ char* remove_duplicates(char* key){
         }
         counter_key++;
     }
+    free(key);
     return without_dup;
 }
 
