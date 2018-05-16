@@ -58,7 +58,7 @@ int check_user_input(int encode_decode_flag, char* key1, char* key2, char* messa
         print_help_message();
         return -1;
     }
-    if(strlen(key1)>9 || strlen(key2)<5){
+    if(strlen(key1)>9 || strlen(key1)<5){
         printf("The first key must be between 5 and 9 characters long\n");
         print_help_message();
         return -1;
@@ -112,7 +112,6 @@ int main(int argc, char** argv){
             strcpy(message, *(argv+arg_num));
         }
         else if(strcmp(arg, "-f")==0 || strcmp(arg, "--first-key")==0){
-            printf("reading the first key\n");
             key_1 = (char*) calloc(1, KEY_SIZE);
             arg_num++;
             strcpy(key_1, *(argv+arg_num));
@@ -135,6 +134,6 @@ int main(int argc, char** argv){
         char* after_first = first_encoding(message, key_1);
     }
     else{
-        //decode
+        create_alphabets_on_key(key_2);
     }
 }

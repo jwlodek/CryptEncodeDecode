@@ -82,3 +82,34 @@ char* get_transpose_alpha(char* key, int width){
     return transpose_alpha;
 }
 
+void print_alphabets(char** alphabets, int num){
+    int i;
+    for(i=0; i<num; i++){
+        printf("Alphabet %d is %s\n", i, *(alphabets+i));
+    }
+}
+
+/*
+ * Function used top generate alphabets for the second encoding pass
+ * 
+ * @params: key -> keyword for the alphabets
+ * @return: array of alphabets for given key
+ */
+char** create_alphabets_on_key(char* key){
+    char** alphabets = (char**) malloc(strlen(key)*sizeof(char*));
+    int i;
+    for(i=0; i<strlen(key); i++){
+        *(alphabets+i) = (char*) malloc(26);
+        int j = 0;
+        int k;
+        while(double_alphabet[j]!=key[i]) j++;
+        for(k=0; k<26; k++){
+            *(alphabets+i)[k] = double_alphabet[j];
+            j++;
+        }
+    }
+    int len = strlen(key);
+    free(key);
+    print_alphabets(alphabets, len);
+    return alphabets;
+}
