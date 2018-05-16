@@ -1,3 +1,15 @@
+/*
+ * This program is based on a final project I had for my Graph Theory class.
+ * 
+ * The project envolved decoding a cryptogram that had two different encryptions
+ * applied to it. The encryptions are explained in greater detail in the README file
+ * 
+ * This is the main runner file of the program
+ * 
+ * Author: Jakub Wlodek
+ * Created: 5/16/18
+ */
+
 #define KEY_SIZE  256
 #define MESSAGE_SIZE 1024
 

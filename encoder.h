@@ -1,7 +1,4 @@
-
-char* remove_duplicates(char* key);
-
-char* get_transpose_alpha(char* key, int width);
+#include "common.h"
 
 char* first_encoding(char* message, char* first_key);
 
