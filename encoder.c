@@ -47,13 +47,58 @@ char* remove_duplicates(char* key){
 }
 
 /*
+ * Function used to get the key-transpose alphabet
+ * 
+ * 
+ * 
+ * 
+ */ 
+char* get_transpose_alpha(char* key, int width){
+    char* temp = (char*) calloc(1, 50);
+    int counter = 0;
+    int i;
+    for(i=0; i<strlen(key); i++){
+        temp[counter] = key[counter];
+        counter++;
+    }
+    int j = 0;
+    for(j=0; j<26; j++){
+        temp[counter] = alphabet[j];
+        counter++;
+    }
+    char* transpose_no_dup = remove_duplicates(temp);
+    char* transpose_alpha = (char*) calloc(1, 50);
+    int prevp = 0;
+    int p = 0;
+    int letter_counter = 0;
+    while(letter_counter<26){
+        transpose_alpha[letter_counter] = transpose_no_dup[p];
+        p = p+width;
+        if(p >= 26){
+            p = prevp+1;
+            prevp = prevp+1;
+        }
+        letter_counter++;
+    }
+    printf("The new alphabet is %s\n", transpose_alpha);
+    return transpose_alpha;
+}
+
+/*
  * The first encoding is a key transpose cypher. 
  * More details can be found in the README file 
  * @params: message -> the initial message to encode
  * @params: first_key -> the keyword used to
  */
 char* first_encoding(char* message, char* first_key){
-    //TODO
+    char* no_dup = remove_duplicates(first_key);
+    int width = strlen(first_key);
+    int height = (26/width)+1;
+    char** key_transpose_alpha = (char**) malloc(width*sizeof(char*));
+    int i;
+    for(i=0; i<width; i++){
+        *(key_transpose_alpha+i) = (char*) calloc(1,sizeof(char)*height);
+    }
 }
 
 char* second_encoding(char* message, char* second_key){

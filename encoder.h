@@ -1,6 +1,8 @@
 
 char* remove_duplicates(char* key);
 
+char* get_transpose_alpha(char* key, int width);
+
 char* first_encoding(char* message, char* first_key);
 
 char* second_encoding(char* message, char* second_key);
