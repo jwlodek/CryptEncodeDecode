@@ -96,15 +96,15 @@ void print_alphabets(char** alphabets, int num){
  * @return: array of alphabets for given key
  */
 char** create_alphabets_on_key(char* key){
-    char** alphabets = (char**) malloc(strlen(key)*sizeof(char*));
+    char* alphabets[strlen(key)];
     int i;
     for(i=0; i<strlen(key); i++){
-        *(alphabets+i) = (char*) malloc(26);
+        alphabets[i] = (char*) calloc(1, 50);
         int j = 0;
         int k;
         while(double_alphabet[j]!=key[i]) j++;
         for(k=0; k<26; k++){
-            *(alphabets+i)[k] = double_alphabet[j];
+            alphabets[i][k] = double_alphabet[j];
             j++;
         }
     }
