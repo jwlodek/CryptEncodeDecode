@@ -49,7 +49,19 @@ char* first_encoding(char* message, char* first_key){
  * @params: first_key -> the keyword used to
  */
 char* second_encoding(char* message, char* second_key){
-    //TODO
+    char** alphabets = create_alphabets_on_key(second_key);
+    char* encoded = (char*) calloc(1, 1024);
+    int i;
+    int counter = 0;
+    for(i=0; i<strlen(message); i++){
+        encoded[i] = alphabets[counter][65-message[i]];
+        counter++;
+        if(counter==strlen(second_key)) counter = 0;
+    }
+    free(second_key);
+    free(message);
+    printf("The final encoded message is %s\n", encoded);
+    return encoded;
 }
 
 char* encode_message(char* message, char* first_key, char* second_key){

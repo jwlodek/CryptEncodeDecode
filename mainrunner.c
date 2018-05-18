@@ -132,8 +132,9 @@ int main(int argc, char** argv){
     if(check==-1) return -1;
     else if(encode_decode_flag==0){
         char* after_first = first_encoding(message, key_1);
+        char* after_second = second_encoding(after_first,key_2);
     }
     else{
-        create_alphabets_on_key(key_2);
+        //TODO
     }
 }
