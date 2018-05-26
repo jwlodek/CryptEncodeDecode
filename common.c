@@ -95,6 +95,14 @@ void print_alphabets(char** alphabets, int num){
     }
 }
 
+char get_pos(char c, char* alphabet){
+    int i;
+    for(i=0; i<26; i++){
+        if(alphabet[i]==c) return alphabet[i];
+    }
+    return '\0';
+}
+
 /*
  * Function used to generate alphabets for the second encoding pass
  * 

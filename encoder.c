@@ -1,5 +1,6 @@
 /*
- * This program is based on a final project I had for my Graph Theory class.
+ * This program is based on a final project I had for my AMS 303 Graph Theory class.
+ * at Stony Brook University
  * 
  * The project envolved decoding a cryptogram that had two different encryptions
  * applied to it. The encryptions are explained in greater detail in the README file
@@ -21,8 +22,8 @@
  * More details can be found in the README file 
  * 
  * @params: message -> the initial message to encode
- * @params: first_key -> the keyword used to
- * @return: coded message
+ * @params: first_key -> the keyword used to generate the transpose alphabet
+ * @return: coded message after first encoding pass
  */
 char* first_encoding(char* message, char* first_key){
     char* no_dup = remove_duplicates(first_key);
@@ -42,11 +43,12 @@ char* first_encoding(char* message, char* first_key){
 }
 
 /*
- * The first encoding is a key transpose cypher. 
+ * The second encoding uses a key to generate several alphabets. 
+ * that then map to the letters of a given alphabet
  * More details can be found in the README file 
  * 
  * @params: message -> the initial message to encode
- * @params: first_key -> the keyword used to
+ * @params: second_key -> the keyword used for the second encoding
  */
 char* second_encoding(char* message, char* second_key){
     int len = strlen(second_key);
@@ -71,6 +73,14 @@ char* second_encoding(char* message, char* second_key){
     return encoded;
 }
 
+/*
+ * Function that combines the two encodings and returns an encoded message
+ * 
+ * @params: message -> messgae to be encoded
+ * @params: first_key -> key for first encoding
+ * @params: second_key -> key for second encoding
+ * @return: after_second -> encoded message after both rounds
+ */
 char* encode_message(char* message, char* first_key, char* second_key){
     printf("Encoding message...");
     char* after_first = first_encoding(message,first_key);

@@ -19,4 +19,6 @@ char* get_transpose_alpha(char* key, int width);
 
 void print_alphabets(char** alphabets, int num);
 
+char get_pos(char c, char* alphabet);
+
 struct alphabet_set* create_alphabets_on_key(char* key);

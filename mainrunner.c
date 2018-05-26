@@ -17,6 +17,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "encoder.h"
+#include "decoder.h"
 
 //function used for printing help message
 void print_help_message(){
@@ -134,6 +135,7 @@ int main(int argc, char** argv){
         char* encoded = encode_message(message, key_1, key_2);
     }
     else{
-        //TODO
+        char* decoded = first_decoding(message, key_2);
+        printf ("The first decoding gives us %s\n", decoded);
     }
 }
