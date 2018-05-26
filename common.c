@@ -78,7 +78,7 @@ char* get_transpose_alpha(char* key, int width){
         letter_counter++;
     }
     free(transpose_no_dup);
-    printf("The new alphabet is %s\n", transpose_alpha);
+    //printf("The new alphabet is %s\n", transpose_alpha);
     return transpose_alpha;
 }
 
@@ -95,21 +95,23 @@ void print_alphabets(char** alphabets, int num){
  * @params: key -> keyword for the alphabets
  * @return: array of alphabets for given key
  */
-char** create_alphabets_on_key(char* key){
-    char* alphabets[strlen(key)];
+struct alphabet_set* create_alphabets_on_key(char* key){
+    struct alphabet_set* set = (struct alphabet_set*) malloc(sizeof(struct alphabet_set));
+    set->num_alphas = strlen(key);
+    set->alphas = (char**)malloc(set->num_alphas*sizeof(char*));
     int i;
-    for(i=0; i<strlen(key); i++){
-        alphabets[i] = (char*) calloc(1, 50);
+    for(i=0; i<set->num_alphas; i++){
+        set->alphas[i] = (char*) calloc(1, 50);
         int j = 0;
         int k;
         while(double_alphabet[j]!=key[i]) j++;
         for(k=0; k<26; k++){
-            alphabets[i][k] = double_alphabet[j];
+            set->alphas[i][k] = double_alphabet[j];
             j++;
         }
     }
     int len = strlen(key);
     free(key);
-    print_alphabets(alphabets, len);
-    return alphabets;
+    //print_alphabets(set->alphas, len);
+    return set;
 }
