@@ -109,7 +109,6 @@ char** create_alphabets_on_key(char* key){
         }
     }
     int len = strlen(key);
-    free(key);
     print_alphabets(alphabets, len);
     return alphabets;
 }
