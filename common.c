@@ -125,12 +125,7 @@ struct alphabet_set* create_alphabets_on_key(char* key){
         }
     }
     int len = strlen(key);
-<<<<<<< HEAD
-    print_alphabets(alphabets, len);
-    return alphabets;
-=======
     free(key);
     //print_alphabets(set->alphas, len);
     return set;
->>>>>>> 5fd811e606f42f1dc1ad282d648f1f94311004a2
 }
