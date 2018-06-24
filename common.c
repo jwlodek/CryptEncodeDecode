@@ -95,10 +95,20 @@ void print_alphabets(char** alphabets, int num){
     }
 }
 
-char get_pos(char c, char* alphabet){
+/*
+ * Function that retrieves a character's position in the standard alphabet,
+ * and returns the corresponding character from a second, given alphabet.
+ * Used for the first decoding phase.
+ * 
+ * @params: c -> character currently being tested
+ * @params: second_alpha -> second alphabet from which resulting character is found
+ * @return: the char from the second alphabet at the same position as c in the standard one
+ * 
+ */
+char get_pos(char c, char* second_alpha){
     int i;
     for(i=0; i<26; i++){
-        if(alphabet[i]==c) return alphabet[i];
+        if(alphabet[i]==c) return second_alpha[i];
     }
     return '\0';
 }
@@ -126,6 +136,6 @@ struct alphabet_set* create_alphabets_on_key(char* key){
     }
     int len = strlen(key);
     free(key);
-    //print_alphabets(set->alphas, len);
+    print_alphabets(set->alphas, len);
     return set;
 }

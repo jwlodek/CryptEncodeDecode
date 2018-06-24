@@ -17,6 +17,17 @@
 #include "decoder.h"
 #include "common.h"
 
+/*
+ * Function that handles the first decoding step. First, it generates an
+ * alphabet set, like the second encoding. Next, it iterates over the message
+ * and calls get_pos() on each character and the appropriate alphabet to decrypt
+ * the second encoding.
+ * 
+ * @params: message -> the twice-encrypted message
+ * @params: second_key -> the second encoding/decoding key
+ * @return: the message after the first decoding.
+ * 
+ */ 
 char* first_decoding(char* message, char* second_key){
     int width = strlen(second_key);
     struct alphabet_set* alphabets = create_alphabets_on_key(second_key);
@@ -24,7 +35,8 @@ char* first_decoding(char* message, char* second_key){
     char* decoded = (char*) calloc(1, 1024);
     int i;
     int counter = 0;
-    for(i=0; i<strlen(message); i++){
+    int message_length = strlen(message);
+    for(i=0; i<message_length; i++){
         char letter = get_pos(message[i], alphas[counter]);
         decoded[i] = letter;
         counter++;
