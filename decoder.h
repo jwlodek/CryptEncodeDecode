@@ -1,3 +1,4 @@
+#include "common.h"
 
 char* first_decoding(char* message, char* first_key);
 

@@ -36,7 +36,6 @@ char* first_encoding(char* message, char* first_key){
         int location = message[i]-65;
         after_first[i] = transpose_alpha[location];
     }
-    //printf("The message after the first encoding is: %s\n", after_first);
     free(message);
     free(transpose_alpha);
     return after_first;
@@ -69,7 +68,6 @@ char* second_encoding(char* message, char* second_key){
     }
     free(alphabets->alphas);
     free(alphabets);
-    //printf("The final encoded message is %s\n", encoded);
     return encoded;
 }
 
@@ -84,7 +82,6 @@ char* second_encoding(char* message, char* second_key){
 char* encode_message(char* message, char* first_key, char* second_key){
     printf("Encoding message...\n");
     char* after_first = first_encoding(message,first_key);
-    printf("The first-level encoding is %s\n",after_first);
     char* after_second = second_encoding(after_first, second_key);
     printf("The encoded message reads: %s\n", after_second);
     return after_second;

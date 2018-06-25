@@ -133,11 +133,10 @@ int main(int argc, char** argv){
     if(check==-1) return -1;
     else if(encode_decode_flag==0){
         char* encoded = encode_message(message, key_1, key_2);
+        free(encoded);
     }
     else{
-        char* decoded = first_decoding(message, key_2);
-        printf ("The first decoding gives us %s\n", decoded);
-        char* second_decode = second_decoding(decoded, key_1);
-        printf("The second decoding gives us %s\n", second_decode);
+        char* decoded = decode_message(message, key_1, key_2);
+        free(decoded);
     }
 }

@@ -1,11 +1,11 @@
 /*
- * This program is based on a final project I had for my AMS 303 Graph Theory class.
- * at Stony Brook University
+ * This program is based on a final project I had for my AMS 303 Graph Theory class
+ * at Stony Brook University.
  * 
  * The project envolved decoding a cryptogram that had two different encryptions
  * applied to it. The encryptions are explained in greater detail in the README file
  * 
- * This file will contain the functions for encoding a message given two key words
+ * This file will contain the functions for decoding a message given two key words
  * 
  * Author: Jakub Wlodek
  * Created: 5/16/18
@@ -15,7 +15,6 @@
 #include <stdio.h>
 #include <string.h>
 #include "decoder.h"
-#include "common.h"
 
 /*
  * Function that handles the first decoding step. First, it generates an
@@ -52,12 +51,21 @@ char* first_decoding(char* message, char* second_key){
     return decoded;
 }
 
+/*
+ * Function responsible for the second decoding, that ultimately returns
+ * the original message. First we remove duplicates and generate a transpose
+ * alphabet. From there, we find each letter in the message in the transpose
+ * alphabet, find the corresponding letter in the standard alphabet, and
+ * use this information to get the original message
+ * 
+ * @params: message -> the message after the first decoding step
+ * @params: first_key -> the first encoding key
+ * @return: the fully decoded message
+ */ 
 char* second_decoding(char* message, char* first_key){
     char* no_dup = remove_duplicates(first_key);
-    printf("%s\n", no_dup);
     int width = strlen(no_dup);
     char* transpose_alpha = get_transpose_alpha(no_dup, width);
-    printf("%s\n%s\n", transpose_alpha, "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
     free(no_dup);
     char* final_decoded = (char*) calloc(1, 1024);
     int i;
@@ -69,6 +77,18 @@ char* second_decoding(char* message, char* first_key){
     return final_decoded;
 }
 
+/*
+ * Function that combines the two decodings and returns a decoded message
+ * 
+ * @params: message -> messgae to be decoded
+ * @params: first_key -> key for first encoding/second decoding
+ * @params: second_key -> key for second encoding/first decoding
+ * @return: after_second -> decoded message after both rounds
+ */
 char* decode_message(char* message, char* first_key, char* second_key){
-
+    printf("Decoding message...\n");
+    char* after_first = first_decoding(message, second_key);
+    char* after_second = second_decoding(after_first, first_key);
+    printf("The decoded message reads: %s\n", after_second);
+    return after_second;
 }

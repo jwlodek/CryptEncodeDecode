@@ -12,10 +12,13 @@
 
 //the double alphabet is used to generate alphabets for the second encoding step
 char* double_alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+//single alphabet is used throughout
 char* alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 /*
- * Function that is used to remove duplicate letters from the first key
+ * Function that is used to remove duplicate letters from the first key.
+ * Also used in generating a transpose alphabet
  * 
  * @params: key -> the first encoding key
  * @return: key without duplicates
@@ -45,6 +48,7 @@ char* remove_duplicates(char* key){
  * First, the key is placed in front of the standard alphabet,
  * then, the duplicate letters are removed. Then, the alphabet is re-
  * structured into a keyword transpose table of the given key's width
+ * Further information can be found in the README file.
  * 
  * @params: key -> key without duplicate letters
  * @params: width -> length of the key without duplicates
@@ -78,7 +82,6 @@ char* get_transpose_alpha(char* key, int width){
         letter_counter++;
     }
     free(transpose_no_dup);
-    //printf("The new alphabet is %s\n", transpose_alpha);
     return transpose_alpha;
 }
 
@@ -96,13 +99,13 @@ void print_alphabets(char** alphabets, int num){
 }
 
 /*
- * Function that retrieves a character's position in the standard alphabet,
- * and returns the corresponding character from a second, given alphabet.
- * Used for the first decoding phase.
+ * Function that retrieves a character's position in the given alphabet,
+ * and returns the corresponding character from the standard alphabet.
+ * Used for decoding.
  * 
  * @params: c -> character currently being tested
- * @params: second_alpha -> second alphabet from which resulting character is found
- * @return: the char from the second alphabet at the same position as c in the standard one
+ * @params: second_alpha -> second alphabet from which character's position is found
+ * @return: the char from the alphabet at the same position as c in the given one
  * 
  */
 char get_pos(char c, char* second_alpha){
@@ -136,6 +139,6 @@ struct alphabet_set* create_alphabets_on_key(char* key){
     }
     int len = strlen(key);
     free(key);
-    print_alphabets(set->alphas, len);
+    //print_alphabets(set->alphas, len);
     return set;
 }
