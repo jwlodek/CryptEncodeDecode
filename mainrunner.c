@@ -94,9 +94,7 @@ int main(int argc, char** argv){
     char* key_2 = NULL;
     char* message = NULL;
     while(arg_num<argc){
-        //printf("The arg is %s.\n", *(argv+arg_num));
         char* arg = *(argv+arg_num);
-        //printf("%d\n",strcmp(arg,"-f"));
         if(strcmp(arg,"-h")==0 || strcmp(arg,"--help")==0){
             print_help_message();
             return 0;
