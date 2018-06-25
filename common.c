@@ -113,6 +113,14 @@ char get_pos(char c, char* second_alpha){
     return '\0';
 }
 
+char get_pos_reverse(char c, char* second_alpha){
+    int i;
+    for(i=0; i< 26; i++){
+        if(second_alpha[i]==c) return alphabet[i];
+    }
+    return '\0';
+}
+
 /*
  * Function used to generate alphabets for the second encoding pass
  * 

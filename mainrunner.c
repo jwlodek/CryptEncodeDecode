@@ -137,5 +137,7 @@ int main(int argc, char** argv){
     else{
         char* decoded = first_decoding(message, key_2);
         printf ("The first decoding gives us %s\n", decoded);
+        char* second_decode = second_decoding(decoded, key_1);
+        printf("The second decoding gives us %s\n", second_decode);
     }
 }

@@ -82,8 +82,9 @@ char* second_encoding(char* message, char* second_key){
  * @return: after_second -> encoded message after both rounds
  */
 char* encode_message(char* message, char* first_key, char* second_key){
-    printf("Encoding message...");
+    printf("Encoding message...\n");
     char* after_first = first_encoding(message,first_key);
+    printf("The first-level encoding is %s\n",after_first);
     char* after_second = second_encoding(after_first, second_key);
     printf("The encoded message reads: %s\n", after_second);
     return after_second;

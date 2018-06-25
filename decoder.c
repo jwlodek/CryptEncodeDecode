@@ -53,7 +53,20 @@ char* first_decoding(char* message, char* second_key){
 }
 
 char* second_decoding(char* message, char* first_key){
-    
+    char* no_dup = remove_duplicates(first_key);
+    printf("%s\n", no_dup);
+    int width = strlen(no_dup);
+    char* transpose_alpha = get_transpose_alpha(no_dup, width);
+    printf("%s\n%s\n", transpose_alpha, "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+    free(no_dup);
+    char* final_decoded = (char*) calloc(1, 1024);
+    int i;
+    for(i=0; i<strlen(message); i++){
+        final_decoded[i] = get_pos_reverse(message[i], transpose_alpha);
+    }
+    free(message);
+    free(transpose_alpha);
+    return final_decoded;
 }
 
 char* decode_message(char* message, char* first_key, char* second_key){
