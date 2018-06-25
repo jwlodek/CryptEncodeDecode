@@ -62,7 +62,7 @@ char* second_decoding(char* message, char* first_key){
     char* final_decoded = (char*) calloc(1, 1024);
     int i;
     for(i=0; i<strlen(message); i++){
-        final_decoded[i] = get_pos_reverse(message[i], transpose_alpha);
+        final_decoded[i] = get_pos(message[i], transpose_alpha);
     }
     free(message);
     free(transpose_alpha);
