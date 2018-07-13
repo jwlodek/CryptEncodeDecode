@@ -81,12 +81,13 @@ To encrypt the messages, two different encryption techniques are concatenated. F
 2) Next, it is placed at the top of a table, which has width equal to the length of the key without the repeating letters. 
 3) Third, the remaining letters of the alphabet (the ones not present in the key) are written in one by one horizontally starting below the first letter of the key, and looping back once the width of the table is reached. For example, if the key is FIRST, the table would look as follows:
 
-F  | I |  R |  S |  T  
-A  | B |  C |  D |  E  
-G  | H |  J |  K |  L   
-M  | N |  O |  P |  Q  
-U  | V |  W |  X |  Y  
-Z  |   |    |    |   
+| F | I | R | S | T |
+|---|---|---|---|---|
+| A | B | C | D | E |
+| G | H | J | K | L |
+| M | N | O | P | Q |
+| U | V | W | X | Y |
+| Z |   |   |   |   |
 
 4) Then, each letter in the message is translated into its encoding by checking its position in the standard alphabet, and counting out this position going downwards in the transpose table. For example, if the message is MESSAGE, the letter 'M' is the 13th letter in the aplphabet, and counting out 13 letters gives us F->A->G->M->U->Z->I->B->H->N->V->R->C. The other letters in the message are encoded similarly.
 
