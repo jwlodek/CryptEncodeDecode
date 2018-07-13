@@ -4,6 +4,10 @@ all:
 	gcc -c decoder.c
 	gcc -c common.c
 	gcc mainrunner.o encoder.o decoder.o common.o -o encoder_decoder
+	rm -f mainrunner.o
+	rm -f encoder.o
+	rm -f decoder.o
+	rm -f common.o
 
 debug:
 	gcc -c mainrunner.c -g
@@ -11,10 +15,10 @@ debug:
 	gcc -c common.c -g
 	gcc -c decoder.c -g
 	gcc mainrunner.o encoder.o decoder.o common.o -o encoder_decoder
-
-clean:
-	rm -f encoder_decoder
 	rm -f mainrunner.o
 	rm -f encoder.o
 	rm -f decoder.o
 	rm -f common.o
+
+clean:
+	rm -f encoder_decoder
