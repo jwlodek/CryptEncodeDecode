@@ -24,7 +24,7 @@ char* alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
  * @return: key without duplicates
  */
 char* remove_duplicates(char* key){
-    char* without_dup = (char*) calloc(1, strlen(key));
+    char* without_dup = (char*) calloc(1, 50);
     int counter_key = 0;
     int counter_wd = 0;
     while(*(key+counter_key)!='\0'){
@@ -58,7 +58,7 @@ char* get_transpose_alpha(char* key, int width){
     char* temp = (char*) calloc(1, 50);
     int counter = 0;
     int i;
-    for(i=0; i<strlen(key); i++){
+    for(i=0; i<width; i++){
         temp[counter] = key[counter];
         counter++;
     }
