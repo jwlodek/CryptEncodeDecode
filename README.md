@@ -16,7 +16,7 @@ git clone https://github.com/jwlodek/CryptEncodeDecode
 ```
 Next, compile the program by simply running
 ```
-make
+make clean all
 ```
 in the appropriate directory. It was compiled on a debian based system using gcc.
 For help in using the program, simply run the created executable as follows
@@ -44,7 +44,7 @@ Flag    |   Description
 
 ### Encryption:
 
-To encrypt a message, you must add the -e flag to the command line, along with the -f, -s, -m flags all followed by strings. The -f flag is required to be longer than 6 characters and shorter than 26. The -s flag is required to be longer than 4 characters and shorter than 10.
+To encrypt a message, you must add the -e flag to the command line, along with the -f, -s, -m flags all followed by strings. The -f flag is required to be longer than 4 characters and shorter than 26. The -s flag is required to be longer than 4 characters and shorter than 10.
 
 An example run of the program in encryption mode is as follows:
 ```
