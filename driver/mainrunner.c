@@ -1,11 +1,11 @@
 /*
  * This program is based on a final project I had for my Graph Theory class.
- * 
+ *
  * The project envolved decoding a cryptogram that had two different encryptions
  * applied to it. The encryptions are explained in greater detail in the README file
- * 
+ *
  * This is the main runner file of the program
- * 
+ *
  * Author: Jakub Wlodek
  * Created: 5/16/18
  */
@@ -59,8 +59,8 @@ int check_user_input(int encode_decode_flag, char* key1, char* key2, char* messa
         print_help_message();
         return -1;
     }
-    if(strlen(key1)>9 || strlen(key1)<5){
-        printf("The first key must be between 5 and 9 characters long\n");
+    if(strlen(key1)>9 || strlen(key1)<4){
+        printf("The first key must be between 4 and 9 characters long\n");
         print_help_message();
         return -1;
     }
