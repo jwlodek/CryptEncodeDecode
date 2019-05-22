@@ -15,6 +15,9 @@
 #include <stdio.h>
 #include <string.h>
 #include "decoder.h"
+#include "common.h"
+
+char* alphabetFull = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 /*
  * Function that handles the first decoding step. First, it generates an
@@ -66,11 +69,19 @@ char* second_decoding(char* message, char* first_key){
     char* no_dup = remove_duplicates(first_key);
     int width = strlen(no_dup);
     char* transpose_alpha = get_transpose_alpha(no_dup, width);
+    //printf("The transpose alphabet is %s\n\n", transpose_alpha);
+    //free(transpose_alpha);
+    //char* transpose_alpha = "SAHUNBIVOCJXWDKYTELZRFPMGQ";
     free(no_dup);
     char* final_decoded = (char*) calloc(1, 1024);
     int i;
     for(i=0; i<strlen(message); i++){
-        final_decoded[i] = get_pos(message[i], transpose_alpha);
+        //final_decoded[i] = get_pos(message[i], transpose_alpha);
+        int counter = 0;
+        while(message[i] != alphabetFull[counter]){
+            counter++;
+        }
+        final_decoded[i] = transpose_alpha[counter];
     }
     free(message);
     free(transpose_alpha);
@@ -88,6 +99,8 @@ char* second_decoding(char* message, char* first_key){
 char* decode_message(char* message, char* first_key, char* second_key){
     printf("Decoding message...\n");
     char* after_first = first_decoding(message, second_key);
+    //printf("The first decoding is %s\n", after_first);
+    //printf("=================================\n\n");
     char* after_second = second_decoding(after_first, first_key);
     printf("The decoded message reads: %s\n", after_second);
     return after_second;
