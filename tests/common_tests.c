@@ -22,6 +22,11 @@ char* key_three = "HELLO";
 char* key_four = "WORLD";
 char* message_two = "CRYPTOGRAM";
 
+char* key_five = "SNOWSTORM";
+char* key_six = "SLEDS";
+char* message_three = "";
+char* decoded_three = "";
+
 
 /* Test to check if duplicates removed successfully */
 Test(asserts, remove_duplicates_test) {
