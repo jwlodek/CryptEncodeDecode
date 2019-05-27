@@ -1,3 +1,11 @@
 *.o
 encoder_decoder*
 .vscode
+*.exe
+*.sln
+*.gitattributes
+x64/
+*.vcxproj*
+.vs/
+Debug/
+Release/
